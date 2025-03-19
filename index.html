@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS EXERCISE 1</title>
+</head>
+<body>
+    <h2>JS EXERCISE 1</h2>
+    
+    <label>Enter first number:</label>
+    <input type="number" id="num1"><br><br>
+
+    <label>Enter second number:</label>
+    <input type="number" id="num2"><br><br>
+
+    <button onclick="calculate()">Calculate</button>
+    <button onclick="clearFields()">Clear</button>
+
+    <h3>Results:</h3>
+    <p id="result"></p>
+
+    <script>
+        function calculate() {
+            let n1 = document.getElementById('num1').value;
+            let n2 = document.getElementById('num2').value;
+            
+            if (n1 === "" || n2 === "") {
+                alert("Enter both numbers.");
+                return;
+            }
+
+            n1 = parseFloat(n1);
+            n2 = parseFloat(n2);
+
+            let sum = n1 + n2;
+            let diff = n1 - n2;
+            let prod = n1 * n2;
+            let quot = n2 !== 0 ? (n1 / n2) : "Undefined (Cannot divide by zero)";
+
+            document.getElementById('result').innerHTML = `
+                <b>Sum:</b> ${sum} <br>
+                <b>Difference:</b> ${diff} <br>
+                <b>Product:</b> ${prod} <br>
+                <b>Quotient:</b> ${quot}
+            `;
+        }
+
+        function clearFields() {
+            document.getElementById('num1').value = "";
+            document.getElementById('num2').value = "";
+            document.getElementById('result').innerHTML = "";
+        }
+    </script>
+</body>
+</html>

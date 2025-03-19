@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS EXERCISE 3</title>
+</head>
+<body>
+    <h2>JS EXERCISE 3</h2>
+
+    <label>Enter a number:</label>
+    <input type="number" id="numInput">
+    <button onclick="insertNumber()">Insert</button>
+
+    <h3>Numbers:</h3>
+    <p id="numbersList">None</p>
+
+    <h3>Results:</h3>
+    <p><b>Sum:</b> <span id="sum">0</span></p>
+    <p><b>Highest:</b> <span id="highest">None</span></p>
+    <p><b>Lowest:</b> <span id="lowest">None</span></p>
+
+    <script>
+        let nums = [];
+
+        function insertNumber() {
+            let input = document.getElementById('numInput').value;
+            let num = parseFloat(input);
+
+            if (input === "" || isNaN(num)) {
+                alert("Enter a valid number.");
+                return;
+            }
+
+            nums.push(num);
+            updateResults();
+            document.getElementById('numInput').value = "";
+        }
+
+        function updateResults() {
+            document.getElementById('numbersList').innerText = nums.length ? nums.join(", ") : "None";
+
+            let sum = nums.reduce((a, b) => a + b, 0);
+            let highest = Math.max(...nums);
+            let lowest = Math.min(...nums);
+
+            document.getElementById('sum').innerText = sum;
+            document.getElementById('highest').innerText = highest;
+            document.getElementById('lowest').innerText = lowest;
+        }
+    </script>
+</body>
+</html>

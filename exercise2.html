@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS EXERCISE 2</title>
+</head>
+<body>
+    <h2>JS EXERCISE 2</h2>
+
+    <label>First Name:</label>
+    <input type="text" id="firstName"><br><br>
+
+    <label>Middle Name:</label>
+    <input type="text" id="middleName"><br><br>
+
+    <label>Last Name:</label>
+    <input type="text" id="lastName"><br><br>
+
+    <button onclick="generateFullName()">Generate</button>
+    <button onclick="clearFields()">Clear</button>
+
+    <h3>Result:</h3>
+    <p id="fullName" style="font-weight: bold;"></p>
+
+    <script>
+        function generateFullName() {
+            let first = document.getElementById('firstName').value.trim();
+            let middle = document.getElementById('middleName').value.trim();
+            let last = document.getElementById('lastName').value.trim();
+
+            if (first === "" || last === "") {
+                alert("Enter at least First and Last Name.");
+                return;
+            }
+
+            let fullName = first + " " + (middle ? middle + " " : "") + last;
+            document.getElementById('fullName').innerHTML = `<b>${fullName}</b>`;
+        }
+
+        function clearFields() {
+            document.getElementById('firstName').value = "";
+            document.getElementById('middleName').value = "";
+            document.getElementById('lastName').value = "";
+            document.getElementById('fullName').innerHTML = "";
+        }
+    </script>
+</body>
+</html>
